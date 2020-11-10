@@ -55,6 +55,10 @@ class Lane extends Component {
   }
 
   laneDidMount = node => {
+    if(!this.hasInit && node){
+      node.scrollTop = this.props.scrollTop;
+      this.hasInit = true;
+    }
     if (node) {
       node.addEventListener('scroll', this.handleScroll)
     }
@@ -302,6 +306,7 @@ Lane.propTypes = {
   cardDragClass: PropTypes.string,
   cardDropClass: PropTypes.string,
   canAddLanes: PropTypes.bool,
+  scrollTop: PropTypes.number,
   t: PropTypes.func.isRequired
 }
 
